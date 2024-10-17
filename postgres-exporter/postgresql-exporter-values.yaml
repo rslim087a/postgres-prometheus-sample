@@ -1,0 +1,32 @@
+# PostgreSQL Exporter Helm Values
+
+# Image configuration
+image:
+  tag: "v0.12.0"
+
+# Datasource configuration
+config:
+  datasource:
+    host: "postgresql.database-monitoring.svc.cluster.local"
+    user: "postgres"
+    pass: "password123"
+    port: "5432"
+    database: "postgres"
+    sslmode: "disable"
+  
+  # Metrics collectors configuration
+  exporter:
+    default_metrics:
+      enabled: true
+
+serviceMonitor:
+  enabled: true
+  interval: 30s
+  scrapeTimeout: 10s
+  labels:
+    release: prometheus
+
+# Explicitly set the DATA_SOURCE_NAME environment variable
+extraEnvs:
+  - name: DATA_SOURCE_NAME
+    value: "postgresql://postgres:password123@postgresql.database-monitoring.svc.cluster.local:5432/postgres?sslmode=disable"
