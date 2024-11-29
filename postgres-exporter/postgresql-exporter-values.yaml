@@ -8,8 +8,12 @@ image:
 config:
   datasource:
     host: "postgresql.database-monitoring.svc.cluster.local"
-    user: "postgres"
-    pass: "password123"
+    userSecret:
+      name: postgresql-secret
+      key: POSTGRES_USER
+    passwordSecret:
+      name: postgresql-secret
+      key: POSTGRES_PASSWORD
     port: "5432"
     database: "postgres"
   
