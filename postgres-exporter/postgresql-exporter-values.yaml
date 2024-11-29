@@ -12,7 +12,6 @@ config:
     pass: "password123"
     port: "5432"
     database: "postgres"
-    sslmode: "disable"
   
   # Metrics collectors configuration
   exporter:
