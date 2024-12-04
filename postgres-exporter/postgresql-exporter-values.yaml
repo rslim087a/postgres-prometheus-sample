@@ -15,12 +15,7 @@ config:
       name: postgresql-secret
       key: POSTGRES_PASSWORD
     port: "5432"
-    database: "postgres"
-  
-  # Metrics collectors configuration
-  exporter:
-    default_metrics:
-      enabled: true
+    # database: "postgres"  
 
 serviceMonitor:
   enabled: true
@@ -29,7 +24,7 @@ serviceMonitor:
   labels:
     release: prometheus
 
-# Explicitly set the DATA_SOURCE_NAME environment variable
-extraEnvs:
-  - name: DATA_SOURCE_NAME
-    value: "postgresql://postgres:password123@postgresql.database-monitoring.svc.cluster.local:5432/postgres?sslmode=disable"
+# # Explicitly set the DATA_SOURCE_NAME environment variable
+# extraEnvs:
+#   - name: DATA_SOURCE_NAME
+#     value: "postgresql://postgres:password123@postgresql.database-monitoring.svc.cluster.local:5432/postgres?sslmode=disable"
